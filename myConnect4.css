@@ -1,0 +1,74 @@
+/* game board table */
+html{
+    padding: 0;
+    margin: 0;
+}
+body{
+    height: 100vh;
+    background: radial-gradient(circle, hsla(206, 91%, 66%, 1) 0%, hsla(190, 90%, 51%, 1) 100%);
+}
+ h1{
+    text-align: center;
+    display: block;
+    font-size: 6rem;
+    margin-top: 0;
+    margin-bottom: 5vh;
+    position: relative;
+    color: aliceblue;
+    font-weight: 600;
+    text-shadow: 5px 4px 4px #8ecae6;
+    top: 5px;
+    text-transform: uppercase;
+ }
+#board{
+    margin-top: 0vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5vh;
+}
+
+#board td {
+  width: 65px;
+  height: 65px;
+  border: solid 2px #666;
+  
+}
+
+/* pieces are div within game table cells: draw as colored circles */
+
+.piece {
+  /* TODO: make into circles */
+  margin: 5px;
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  animation-name: fall-animation;
+  animation-duration: 500ms; 
+}
+
+/* TODO: make pieces red/blue,  depending on player 1/2 piece */
+.piece.p1{
+background: radial-gradient(circle, hsla(0, 0%, 100%, 1) 0%, hsla(0, 100%, 50%, 1) 31%);
+
+}
+.piece.p2 {
+    background: radial-gradient(circle, hsla(186, 100%, 69%, 1) 0%, hsla(238, 100%, 50%, 1) 36%);
+}
+/* column-top is table row of clickable areas for each column */
+
+#column-top td {
+  border: dashed 1px lightgray;
+}
+
+#column-top td:hover {
+  background-color: gold;
+}
+
+@keyframes fall-animation {
+    from {
+        transform: translateY(-500px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
