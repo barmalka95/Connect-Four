@@ -31,7 +31,7 @@ body{
   width: 65px;
   height: 65px;
   border: solid 2px #666;
-  
+  position: relative;
 }
 
 /* pieces are div within game table cells: draw as colored circles */
@@ -44,12 +44,13 @@ body{
   border-radius: 50%;
   animation-name: fall-animation;
   animation-duration: 500ms; 
+  position: absolute;
+  top: 0;
 }
 
 /* TODO: make pieces red/blue,  depending on player 1/2 piece */
 .piece.p1{
 background: radial-gradient(circle, hsla(0, 0%, 100%, 1) 0%, hsla(0, 100%, 50%, 1) 31%);
-
 }
 .piece.p2 {
     background: radial-gradient(circle, hsla(186, 100%, 69%, 1) 0%, hsla(238, 100%, 50%, 1) 36%);

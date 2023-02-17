@@ -9,7 +9,7 @@ const WIDTH = 7;
 const HEIGHT = 6;
 
 let currPlayer = 1; // active player: 1 or 2
-let htmlBoard = []; // array of rows, each row is array of cells  (board[y][x])
+let board = []; // array of rows, each row is array of cells  (board[y][x])
 
 /* * makeBoard: create in-JS board structure:
  *    board = array of rows, each row is array of cells  (board[y][x])
@@ -18,7 +18,7 @@ let htmlBoard = []; // array of rows, each row is array of cells  (board[y][x])
 function makeBoard() {
   // TODO: set "board" to empty HEIGHT x WIDTH matrix array
   for (let y = 0; y < HEIGHT; y++){
-    htmlBoard.push(Array.from({ length: WIDTH }));
+    board.push(Array.from({ length: WIDTH }));
   }
 }
 
@@ -30,7 +30,7 @@ function makeHtmlBoard() {
 
   // TODO: add comment for this code
   // the variable top is set to create a new element <tr> table row, and set id of column-top to each row we creating, and we adding click event listener to it, and the handleClick function will execute 
-  const top = document.createElement("tr");
+  const top = document.createElement('tr');
   top.setAttribute('id', 'column-top');
   top.addEventListener('click', handleClick);
 
@@ -50,7 +50,7 @@ function makeHtmlBoard() {
     for (let x = 0; x < WIDTH; x++) {
       const cell = document.createElement('td');
       // add id to each cell created y-x, the number of each y dash number of x
-      cell.setAttribute("id", `${y}-${x}`);
+      cell.setAttribute('id', `${y}-${x}`);
       // append cell to the row that created
       row.append(cell);
     }
@@ -65,7 +65,7 @@ function findSpotForCol(x) {
   // TODO: write the real version of this, rather than always returning 0
   //iterate and check from the bottom y(row) all the way up to the top row 0, if the y and the x are falsy, if they are empty, if they are, we will get back the first y of the cell
   for (let y = HEIGHT - 1; y >= 0; y--){
-    if (!htmlBoard[y][x]) {
+    if (!board[y][x]) {
       return y;
     }
   }
@@ -107,7 +107,7 @@ function handleClick(evt) {
 
   // place piece in board and add to HTML table
   // TODO: add line to update in-memory board
-  htmlBoard[y][x] = currPlayer;
+  board[y][x] = currPlayer;
   placeInTable(y, x);
 
   // check for win
@@ -117,7 +117,7 @@ function handleClick(evt) {
 
   // check for tie
   // TODO: check if all cells in board are filled; if so call, call endGame
-  if (htmlBoard.every((row) => row.every((cell) => cell))) {
+  if (board.every((row) => row.every((cell) => cell))) {
     return endGame('It is a TIE!');
   };
 
@@ -140,7 +140,7 @@ function checkForWin() {
         y < HEIGHT &&
         x >= 0 &&
         x < WIDTH &&
-        htmlBoard[y][x] === currPlayer
+        board[y][x] === currPlayer
     );
   }
 
